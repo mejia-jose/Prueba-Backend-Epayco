@@ -49,6 +49,9 @@
 **Funcionalidad 3**
   - Endpoint para enviar mensajes al webhook
 
+**Documentación**
+- Para crear la documentación se uso swagger
+
 - **Pull Request al Repositorio**
 - **Evidencias de las pruebas Pruebas End-to-End (E2E)**
 - **Evidencias de las funcionalidades**
