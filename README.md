@@ -1,3 +1,7 @@
+#A tener encuenta
+1. Instalar los modulos de node "npm i"
+2. Modificar valores del .env para la conexión a la BD.
+
 # Endpoints de la API
 
 - localhost:8000/api-docs
