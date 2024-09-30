@@ -1,77 +1,54 @@
-# Prueba Técnica para Desarrollador Backend
+# Endpoints de la API
 
-¡Hola! Bienvenido a esta prueba técnica para el puesto de Desarrollador Backend. El proyecto base estará basado en **NestJS**. A continuación, encontrarás las instrucciones y criterios que deberás seguir para completar la prueba.
+- localhost:8000/api-docs
+- http://localhost:8000/get-movies?webhook_url=[url]
+- http://localhost:8000/movies/all
+- http://localhost:8000/movies/update/id
 
 ## Consideraciones Generales
 
-- **Endpoint Principal**: Deberás crear un endpoint con la siguiente estructura:
+- **Endpoint Principal**: http://localhost:8000/get-movies?webhook_url=[url]
 
-  ```
-  GET http://localhost:[PUERTO]/get-movies?webhook_url=[URL_DEL_WEBHOOK]
-  ```
-
-- **Monitoreo de Webhooks**: Puedes utilizar el servicio [Webhook.site](https://webhook.site/) para monitorear y probar los webhooks que envíes.
-
-## Criterios Técnicos
 
 ### Configuración de la Base de Datos
 
-- **Variables de Entorno**: Configura la conexión a la base de datos de manera que los parámetros sean invocados desde un archivo `.env`.
+- La configuración de la base de datos se realizó en el archivo `.env`.
 
-### Módulo `movies`
-
-- **Esquema de Mongoose**: Crea un esquema de Mongoose con los siguientes campos:
-
-  - `_id`
-  - `title`
-  - `directors`
-  - `cast`
-  - `similar_year` (array de strings de títulos)
-
-- **Endpoint para Listar Películas**:
-
-  - Crea un endpoint que permita obtener un listado de películas, retornando las primeras 20 películas almacenadas en la base de datos.
-
-### Módulo de Servicios para `similar_year`
-
-- **Funcionalidad**:
-
-  - Este módulo deberá alimentar el campo `similar_year` del esquema `Movie`. El campo `similar_year` es un array de títulos de películas que fueron estrenadas en el mismo año que la película original.
-
-- **Requisitos Técnicos**:
-
-  - Utiliza **Axios** para realizar peticiones HTTP a una API externa.
-  - Implementa **interceptores** para mapear y manejar errores en caso de que existan, retornándolos como respuesta adecuada.
-  - Consume una API como [OMDb API](http://www.omdbapi.com/) para buscar un máximo de **5 títulos** del mismo año.
-
-### Módulo de Servicios para Webhooks
-
-- **Funcionalidad**:
-
-  - Crea un módulo de servicios que emita un evento a un webhook cada vez que se acceda al endpoint principal.
-  - El mensaje enviado al webhook debe ser la **fecha y hora** de la búsqueda realizada.
+### Módulos creados
+- `database`
+- `movies`
+- `similar_year`
+- `webhook`
 
 ### Pruebas End-to-End (E2E)
 
-- **Objetivo**:
+- Se implementaron las pruebas E2E que verifique el correcto funcionamiento los siguientes endpoint:
+  
+  - **http://localhost:8000/get-movies?webhook_url=[url]**
+  - **http://localhost:8000/movies/all**
+  - **http://localhost:8000/movies/update/id**
 
-  - Implementa una prueba E2E que verifique el correcto funcionamiento del endpoint creado.
+## Dependencias instaladas y usadas
+    1. npm install @nestjs/axios axios rxjs
+    2. npm i --save class-validator class-transformer
+    3. npm install @nestjs/swagger swagger-ui-express
+    4. npm install @nestjs/config dotenv
+    5. npm install @nestjs/axios
+    6. npm install @nestjs/mongoose mongoose
 
-## Entrega
+## Entregas
 
-- **Pull Request al Repositorio**:
+- **Funcionalidad 1**
+   - Endpoint que permite obtener un listado de películas, retornando las primeras 20 películas almacenadas en la base de datos
+   - Creación del esquema de mongoose
 
-  - Una vez finalizada la prueba, debes realizar un **Pull Request (PR)** al repositorio proporcionado para su revisión.
+**Funcionalidad 2**
+   - Endpoint que permite actualizar 'similar_year' por medio del ID
+   - Consumo de la OMDb API, para obtner los titulos
 
-## Recomendaciones
+**Funcionalidad 3**
+  - Endpoint para enviar mensajes al webhook
 
-- **Buenas Prácticas**: Asegúrate de seguir buenas prácticas de codificación, incluyendo manejo de errores, código limpio y estructurado.
-- **Documentación**: Comenta el código cuando sea necesario y documenta cualquier decisión técnica relevante.
-
-## Contacto
-
-Si tienes alguna duda o necesitas más información, no dudes en contactarnos. ¡Buena suerte con la prueba!
-
----
-
-Esperamos que disfrutes desarrollando este proyecto y estamos ansiosos por ver tu solución.
+- **Pull Request al Repositorio**
+- **Evidencias de las pruebas Pruebas End-to-End (E2E)**
+- **Evidencias de las funcionalidades**
